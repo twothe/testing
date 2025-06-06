@@ -17,7 +17,7 @@ function base64UrlEncode(input: ArrayBuffer): string {
 export function generateCodeVerifier(): string {
   const array = new Uint8Array(32)
   crypto.getRandomValues(array)
-  return Array.from(array, b => b.toString(36)).join('')
+  return base64UrlEncode(array.buffer)
 }
 
 export async function generateCodeChallenge(verifier: string): Promise<string> {
@@ -31,7 +31,7 @@ export function buildAuthorizeUrl(verifier: string, challenge: string): string {
     response_type: 'code',
     client_id: import.meta.env.VITE_EVE_CLIENT_ID,
     redirect_uri: import.meta.env.VITE_EVE_REDIRECT_URI,
-    scope: 'esi-wallet.read_character_wallet.v1 esi-industry.read_character_jobs.v1 esi-mining.read_opportunities.v1',
+    scope: 'esi-wallet.read_character_wallet.v1 esi-industry.read_character_jobs.v1 esi-industry.read_character_mining.v1',
     code_challenge: challenge,
     code_challenge_method: 'S256',
     state: verifier,
