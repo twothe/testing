@@ -75,9 +75,9 @@ function App() {
         </>
       ) : (
         <>
-          <h1>ISK Rechner</h1>
-          <p>Melde dich mit EVE an, um Wallet-Daten abzurufen.</p>
-          <button onClick={login}>Mit EVE einloggen</button>
+          <h1>ISK Calculator</h1>
+          <p>Log in with EVE to fetch wallet data.</p>
+          <button onClick={login}>Login with EVE</button>
         </>
       )}
     </div>
