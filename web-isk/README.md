@@ -7,4 +7,10 @@ VITE_EVE_CLIENT_ID=<Client-ID aus dem EVE Entwicklerportal>
 VITE_EVE_REDIRECT_URI=http://localhost:5173/
 ```
 
+Soll der Login ohne manuelle Eingabe der ID erfolgen, kann in `public/eveconfig.js` eine feste `clientId` hinterlegt werden:
+
+```javascript
+window.eveConfig = { clientId: 'PASTE-ID-HERE' }
+```
+
 Im Anschluss startet man die Entwicklungsumgebung mit `npm run dev`. Der Login erfolgt über die Schaltfläche "Mit EVE einloggen". Nach erfolgreicher Anmeldung können über "Wallet laden" erste Daten angezeigt werden.
