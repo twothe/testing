@@ -5,18 +5,9 @@ export interface AuthToken {
   obtainedAt: number
 }
 
+import { eveClientId, eveRedirectUri } from './config'
+
 const ssoBase = 'https://login.eveonline.com/v2'
-
-function getClientId(): string {
-  const envId = import.meta.env.VITE_EVE_CLIENT_ID
-  if (!envId) throw new Error('Missing EVE Client ID')
-  return envId
-}
-
-function getRedirectUri(): string {
-  const envUri = import.meta.env.VITE_EVE_REDIRECT_URI
-  return envUri || `${window.location.origin}/`
-}
 
 function base64UrlEncode(input: ArrayBuffer): string {
   return btoa(String.fromCharCode(...new Uint8Array(input)))
@@ -40,8 +31,8 @@ export async function generateCodeChallenge(verifier: string): Promise<string> {
 export function buildAuthorizeUrl(verifier: string, challenge: string): string {
   const params = new URLSearchParams({
     response_type: 'code',
-    client_id: getClientId(),
-    redirect_uri: getRedirectUri(),
+    client_id: eveClientId,
+    redirect_uri: eveRedirectUri,
     scope: 'esi-wallet.read_character_wallet.v1 esi-industry.read_character_jobs.v1 esi-industry.read_character_mining.v1',
     code_challenge: challenge,
     code_challenge_method: 'S256',
@@ -54,7 +45,7 @@ export async function fetchToken(code: string, verifier: string): Promise<AuthTo
   const params = new URLSearchParams({
     grant_type: 'authorization_code',
     code,
-    client_id: getClientId(),
+    client_id: eveClientId,
     code_verifier: verifier,
   })
   const res = await fetch(`${ssoBase}/oauth/token`, {
