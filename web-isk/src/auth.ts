@@ -8,6 +8,8 @@ export interface AuthToken {
 const ssoBase = 'https://login.eveonline.com/v2'
 
 function getClientId(): string {
+  const globalId = (window as WindowWithConfig).eveConfig?.clientId
+  if (globalId) return globalId
   const envId = import.meta.env.VITE_EVE_CLIENT_ID
   if (envId) return envId
   const stored = localStorage.getItem('eveClientId')
