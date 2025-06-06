@@ -12,7 +12,7 @@ function getClientId(): string {
   if (envId) return envId
   const stored = localStorage.getItem('eveClientId')
   if (stored) return stored
-  const entered = prompt('EVE Client ID?')?.trim()
+  const entered = prompt('Enter EVE Client ID:')?.trim()
   if (!entered) throw new Error('Missing EVE Client ID')
   localStorage.setItem('eveClientId', entered)
   return entered

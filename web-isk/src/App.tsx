@@ -74,7 +74,11 @@ function App() {
           )}
         </>
       ) : (
-        <button onClick={login}>Login with EVE</button>
+        <>
+          <h1>ISK Calculator</h1>
+          <p>Log in with EVE to fetch wallet data.</p>
+          <button onClick={login}>Login with EVE</button>
+        </>
       )}
     </div>
   )
