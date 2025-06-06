@@ -7,4 +7,4 @@ VITE_EVE_CLIENT_ID=<Client-ID aus dem EVE Entwicklerportal>
 VITE_EVE_REDIRECT_URI=http://localhost:5173/
 ```
 
-Im Anschluss startet man die Entwicklungsumgebung mit `npm run dev`. Der Login erfolgt über die Schaltfläche "Login with EVE". Nach erfolgreicher Anmeldung können erste Wallet-Daten geladen werden.
+Im Anschluss startet man die Entwicklungsumgebung mit `npm run dev`. Der Login erfolgt über die Schaltfläche "Mit EVE einloggen". Nach erfolgreicher Anmeldung können über "Wallet laden" erste Daten angezeigt werden.
