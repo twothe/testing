@@ -19,7 +19,7 @@ function App() {
           setToken(t)
           window.history.replaceState({}, '', url.origin)
         })
-        .catch(() => alert('Authentication failed'))
+        .catch(() => alert('Anmeldung fehlgeschlagen'))
     }
   }, [])
 
@@ -41,7 +41,7 @@ function App() {
         'mission_bonus_reward',
       ]))
     } catch {
-      alert('Failed to load wallet data')
+      alert('Wallet-Daten konnten nicht geladen werden')
     }
   }
 
@@ -65,7 +65,7 @@ function App() {
     <div className="container">
       {token ? (
         <>
-          <button onClick={loadJournal}>Load Wallet</button>
+          <button onClick={loadJournal}>Wallet laden</button>
           {income !== null && (
             <p>ISK/h: {income.toFixed(2)}</p>
           )}
