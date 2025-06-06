@@ -1,1 +1,0 @@
-window.eveConfig = { clientId: '' }

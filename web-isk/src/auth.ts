@@ -8,16 +8,9 @@ export interface AuthToken {
 const ssoBase = 'https://login.eveonline.com/v2'
 
 function getClientId(): string {
-  const globalId = (window as WindowWithConfig).eveConfig?.clientId
-  if (globalId) return globalId
   const envId = import.meta.env.VITE_EVE_CLIENT_ID
-  if (envId) return envId
-  const stored = localStorage.getItem('eveClientId')
-  if (stored) return stored
-  const entered = prompt('Enter EVE Client ID:')?.trim()
-  if (!entered) throw new Error('Missing EVE Client ID')
-  localStorage.setItem('eveClientId', entered)
-  return entered
+  if (!envId) throw new Error('Missing EVE Client ID')
+  return envId
 }
 
 function getRedirectUri(): string {
